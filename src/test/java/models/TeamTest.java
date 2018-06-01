@@ -1,7 +1,6 @@
 package models;
 
 import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -9,10 +8,6 @@ import java.util.ArrayList;
 import static org.junit.Assert.*;
 
 public class TeamTest {
-
-    @Before
-    public void setUp() throws Exception {
-    }
 
     @After
     public void tearDown() throws Exception {
@@ -83,13 +78,13 @@ public class TeamTest {
     }
 
     @Test
-    public void findById_returnsSpecificTeamById_1() {
+    public void findById_returnsSpecificTeamById_1() throws Exception{
         Team team = new Team();
         assertEquals(1, team.findById(team.getId()).getId());
     }
 
     @Test
-    public void removeMember_removesMemberByNameFromMembers_false() {
+    public void removeMember_removesMemberByNameFromMembers_false() throws Exception{
         Team team = new Team();
         team.addMember("bill");
         team.addMember("scotty");
@@ -99,7 +94,7 @@ public class TeamTest {
     }
 
     @Test
-    public void deleteDestination_deletesDestination_0() throws Exception {
+    public void deleteTeam_deletesTeam_1() throws Exception {
         Team team = new Team();
         Team otherTeam = new Team();
         team.deleteTeam();
