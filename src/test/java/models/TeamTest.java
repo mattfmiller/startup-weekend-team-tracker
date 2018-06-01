@@ -16,6 +16,7 @@ public class TeamTest {
 
     @After
     public void tearDown() throws Exception {
+        Team.clearAll();
     }
 
     @Test
@@ -46,9 +47,18 @@ public class TeamTest {
     }
 
     @Test
+    public void getTeams_correctlyGetsTeams_2() throws Exception {
+        Team team = new Team();
+        Team otherTeam = new Team();
+        assertEquals(2, team.getAll().size());
+    }
+
+    @Test
     public void getId_correctlyGetsId_1() throws Exception {
         Team team = new Team();
+        Team otherTeam = new Team();
         assertEquals(1, team.getId());
+        assertEquals(2, otherTeam.getId());
     }
 
 

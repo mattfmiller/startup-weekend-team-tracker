@@ -7,7 +7,7 @@ public class Team {
     private String name;
     private String description;
     private int id;
-    private ArrayList<Team> teamsList = new ArrayList<>();
+    private static ArrayList<Team> teamsList = new ArrayList<>();
 
     public Team() {
         this.name = null;
@@ -28,7 +28,17 @@ public class Team {
         return description;
     }
 
+    public static ArrayList<Team> getAll() {
+        return teamsList;
+    }
+
     public int getId() {
         return id;
     }
+
+    public static void clearAll() {
+        teamsList.clear();
+    }
+
+
 }
