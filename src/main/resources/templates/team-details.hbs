@@ -1,0 +1,15 @@
+{{#partial "content"}}
+
+    <h5>Team Name:</h5>
+    <p>{{ foundTeam.name }}</p>
+    <h5>Team Members:</h5>
+    {{#each foundTeam.members}}
+        <p> {{ this }}</p>
+    {{/each}}
+
+    <h5>Team Description:</h5>
+    <p> {{ foundTeam.description }}</p>
+
+{{/partial}}
+
+{{> layout.hbs}}
