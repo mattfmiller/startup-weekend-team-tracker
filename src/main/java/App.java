@@ -55,7 +55,6 @@ public class App {
             foundTeam.addMember(newTeamMember);
             res.redirect("/teams/" + idOfTeamToFind);
             return null;
-//            return new ModelAndView(model, "team-details.hbs");
         }, new HandlebarsTemplateEngine());
 
         get("/teams/:id/update", (req, res) -> {
@@ -64,6 +63,18 @@ public class App {
             Team editTeam = Team.findById(idOfTeamToEdit);
             model.put("editTeam", editTeam);
             return new ModelAndView(model, "newteam-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        post("/teams/:id/update", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            String newName = req.queryParams("name");
+            String newDescription = req.queryParams("description");
+            int idOfTeamToEdit = Integer.parseInt(req.params("id"));
+            Team editTeam = Team.findById(idOfTeamToEdit);
+            editTeam.setName(newName);
+            editTeam.setDescription(newDescription);
+            res.redirect("/teams/" + idOfTeamToEdit);
+            return null;
         }, new HandlebarsTemplateEngine());
 
     }
