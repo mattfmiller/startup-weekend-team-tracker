@@ -102,5 +102,14 @@ public class App {
             return null;
         }, new HandlebarsTemplateEngine());
 
+        get("/teams/:id/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfTeamToDelete = Integer.parseInt(req.params("id"));
+            Team teamToDelete = Team.findById(idOfTeamToDelete);
+            teamToDelete.deleteTeam();
+            res.redirect("/");
+            return null;
+        }, new HandlebarsTemplateEngine());
+
     }
 }
