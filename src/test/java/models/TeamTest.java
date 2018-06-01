@@ -75,5 +75,12 @@ public class TeamTest {
         assertEquals("Blue Moon Boys", team.getName());
     }
 
+    @Test
+    public void setDescription_correctlySetsDescription_aTeam() throws Exception {
+        Team team = new Team();
+        team.setDescription("A Team");
+        assertEquals("A Team", team.getDescription());
+    }
+
 
 }
