@@ -58,5 +58,13 @@ public class App {
 //            return new ModelAndView(model, "team-details.hbs");
         }, new HandlebarsTemplateEngine());
 
+        get("/teams/:id/update", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfTeamToEdit = Integer.parseInt(req.params("id"));
+            Team editTeam = Team.findById(idOfTeamToEdit);
+            model.put("editTeam", editTeam);
+            return new ModelAndView(model, "newteam-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
     }
 }
