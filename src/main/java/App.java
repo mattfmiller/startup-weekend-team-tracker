@@ -16,6 +16,13 @@ public class App {
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
+        get("/info", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+//            ArrayList<Team> teams = Team.getAll();
+//            model.put("teams", teams);
+            return new ModelAndView(model, "info.hbs");
+        }, new HandlebarsTemplateEngine());
+
         get("/teams/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "newteam-form.hbs");
