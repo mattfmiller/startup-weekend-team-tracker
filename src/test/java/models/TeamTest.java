@@ -61,5 +61,12 @@ public class TeamTest {
         assertEquals(2, otherTeam.getId());
     }
 
+    @Test
+    public void addMembers_correctlyAddsMembers_bill() throws Exception {
+        Team team = new Team();
+        team.addMember("bill");
+        assertEquals("bill", team.getMembers().get(0));
+    }
+
 
 }

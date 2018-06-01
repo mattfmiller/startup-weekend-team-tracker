@@ -40,5 +40,7 @@ public class Team {
         teamsList.clear();
     }
 
-
+    public void addMember(String newMember) {
+        this.members.add(newMember);
+    }
 }
