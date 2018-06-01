@@ -2,6 +2,7 @@
 
     <h5>Team Name:</h5>
     <p>{{ foundTeam.name }}</p>
+
     <h5>Team Members:</h5>
     {{#each foundTeam.members}}
         <p> {{ this }}</p>
@@ -9,6 +10,19 @@
 
     <h5>Team Description:</h5>
     <p> {{ foundTeam.description }}</p>
+
+    <form action="/teams/{{foundTeam.id}}" method="post">
+        <label for="newTeamMember">Add a team member to {{ foundTeam.name}}</label>
+        <br>
+        <input id="newTeamMember" name="newTeamMember" type="text">
+        <button type="submit" class="btn btn-default">Add</button>
+    </form>
+
+    <p>
+        <!--<a href="/teams/{{foundTeam.id}}/add">Edit this post</a>-->
+        <!--<br>-->
+        <a href="/teams/{{foundTeam.id}}/update">Update this team's details</a>
+    </p>
 
 {{/partial}}
 

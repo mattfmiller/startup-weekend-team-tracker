@@ -47,5 +47,16 @@ public class App {
             return new ModelAndView(model, "team-details.hbs");
         }, new HandlebarsTemplateEngine());
 
+        post("/teams/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            String newTeamMember = req.queryParams("newTeamMember");
+            int idOfTeamToFind = Integer.parseInt(req.params("id"));
+            Team foundTeam = Team.findById(idOfTeamToFind);
+            foundTeam.addMember(newTeamMember);
+            res.redirect("/teams/" + idOfTeamToFind);
+            return null;
+//            return new ModelAndView(model, "team-details.hbs");
+        }, new HandlebarsTemplateEngine());
+
     }
 }
