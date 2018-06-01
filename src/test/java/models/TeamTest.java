@@ -31,5 +31,12 @@ public class TeamTest {
         assertEquals(expected, team.getMembers());
     }
 
+    @Test
+    public void getName_correctlyGetsName_string() throws Exception {
+        Team team = new Team();
+        String expected= null;
+        assertEquals(expected, team.getName());
+    }
+
 
 }

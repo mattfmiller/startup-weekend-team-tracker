@@ -10,11 +10,17 @@ public class Team {
     private ArrayList<Team> teamsList = new ArrayList<>();
 
     public Team() {
+        this.name = null;
+        this.description = null;
         teamsList.add(this);
         this.id = teamsList.size();
     }
 
     public ArrayList<String> getMembers() {
         return members;
+    }
+
+    public String getName() {
+        return name;
     }
 }
