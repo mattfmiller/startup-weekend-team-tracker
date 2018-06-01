@@ -45,5 +45,11 @@ public class TeamTest {
         assertEquals(expected, team.getDescription());
     }
 
+    @Test
+    public void getId_correctlyGetsId_1() throws Exception {
+        Team team = new Team();
+        assertEquals(1, team.getId());
+    }
+
 
 }

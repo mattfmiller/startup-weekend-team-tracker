@@ -27,4 +27,8 @@ public class Team {
     public String getDescription() {
         return description;
     }
+
+    public int getId() {
+        return id;
+    }
 }
