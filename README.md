@@ -19,6 +19,8 @@ This application will allow teams to sign up for a weekend hack-a-thon event wit
 | Program will allow user to view details of specific team | Input: click "Blue Moon Boys" | Output: "Name: Blue Moon Boys/ Members: Bill, Scotty/ Description: Just a couple guys looking to shake, rattle, and roll" |
 | Program will allow users to update their team members  | Input: "DJ" | Output: "Members: Bill, Scotty, DJ" |
 | Program will allow user to update name and description | Input: "The Blue Moon Boys/ Just a few guys looking to shake, rattle, and roll" | Output: "Name: The Blue Moon Boys/ Description: Just a few guys looking to shake, rattle, and roll" |
+| Program will allow users to delete team members  | Input: "DJ" | Output: "Members: Bill, Scotty" |
+| Program will allow users to delete a team  | Input: "The Blue Moon Boys" | Output: "The Hawks" |
 
 
 ## Setup/Installation Requirements
@@ -30,7 +32,7 @@ This application will allow teams to sign up for a weekend hack-a-thon event wit
 
 ## Known Bugs
 
-* N/A
+* Deleting teams does not update other team ids which can lead to a 500 Server Error when routing to a team with IDs higher than that of the deleted team.
 
 ## Support and contact details
 
