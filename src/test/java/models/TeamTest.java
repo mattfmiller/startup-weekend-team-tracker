@@ -87,4 +87,14 @@ public class TeamTest {
         Team team = new Team();
         assertEquals(1, team.findById(team.getId()).getId());
     }
+
+    @Test
+    public void removeMember_removesMemberByNameFromMembers_false() {
+        Team team = new Team();
+        team.addMember("bill");
+        team.addMember("scotty");
+        team.addMember("dj");
+        team.removeMember("scotty");
+        assertFalse(team.getMembers().contains("scotty"));
+    }
 }

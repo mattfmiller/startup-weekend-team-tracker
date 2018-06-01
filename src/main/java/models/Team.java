@@ -55,4 +55,8 @@ public class Team {
     public static Team findById(int id) {
         return teamsList.get(id-1);
     }
+
+    public void removeMember(String memberToRemove) {
+        this.members.remove(memberToRemove);
+    }
 }
