@@ -18,8 +18,6 @@ public class App {
 
         get("/info", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-//            ArrayList<Team> teams = Team.getAll();
-//            model.put("teams", teams);
             return new ModelAndView(model, "info.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -55,7 +53,6 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         post("/teams/:id", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
             String newTeamMember = req.queryParams("newTeamMember");
             int idOfTeamToFind = Integer.parseInt(req.params("id"));
             Team foundTeam = Team.findById(idOfTeamToFind);
@@ -73,7 +70,6 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         post("/teams/:id/update", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
             String newName = req.queryParams("name");
             String newDescription = req.queryParams("description");
             int idOfTeamToEdit = Integer.parseInt(req.params("id"));
@@ -93,7 +89,6 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         post("/teams/:id/members/delete", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
             String memberToRemove = req.queryParams("memberToRemove");
             int idOfTeamToEdit = Integer.parseInt(req.params("id"));
             Team editTeam = Team.findById(idOfTeamToEdit);
@@ -103,7 +98,6 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         get("/teams/:id/delete", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
             int idOfTeamToDelete = Integer.parseInt(req.params("id"));
             Team teamToDelete = Team.findById(idOfTeamToDelete);
             teamToDelete.deleteTeam();

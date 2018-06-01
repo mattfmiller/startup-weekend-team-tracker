@@ -2,33 +2,25 @@
 <html>
 <head>
     <title>{{#block "title"}}Hack The Dot{{/block}}</title>
-
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
 </head>
 <body>
 <ul class="nav nav-tabs">
     <li role="presentation"><a href="/">Home</a></li>
     <li role="presentation"><a href="/info">Event Details</a></li>
+    <li role="presentation"><a href="/teams/new">Register A Team</a></li>
 </ul>
 <div class="container">
     <div class="page-header">
-        <div>
-            <a href="/"><img src="/images/hack.jpg" width="100%"></a>
-        </div>
-        <div>
-            <h3>Hack The Dot PDX</h3>
-            <a href="/teams/new"><button class=""btn btn-info>Register Team</button></a>
-        </div>
+        <a href="/"><img src="/images/hack.jpg" width="100%"></a>
+        <h3>Hack The Dot PDX</h3>
     </div>
-
 
     <div class="col-md-12">
         {{#block "content"}}
         {{/block}}
-
     </div>
 </div>
-<!--end main template-->
 {{#block "footer"}}
     </body>
     </html>
