@@ -32,10 +32,17 @@ public class TeamTest {
     }
 
     @Test
-    public void getName_correctlyGetsName_string() throws Exception {
+    public void getName_correctlyGetsName_null() throws Exception {
         Team team = new Team();
         String expected= null;
         assertEquals(expected, team.getName());
+    }
+
+    @Test
+    public void getDescription_correctlyGetsDescription_null() throws Exception {
+        Team team = new Team();
+        String expected= null;
+        assertEquals(expected, team.getDescription());
     }
 
 
