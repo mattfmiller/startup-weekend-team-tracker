@@ -92,5 +92,15 @@ public class App {
             return new ModelAndView(model, "delete-members.hbs");
         }, new HandlebarsTemplateEngine());
 
+        post("/teams/:id/members/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            String memberToRemove = req.queryParams("memberToRemove");
+            int idOfTeamToEdit = Integer.parseInt(req.params("id"));
+            Team editTeam = Team.findById(idOfTeamToEdit);
+            editTeam.removeMember(memberToRemove);
+            res.redirect("/teams/" + idOfTeamToEdit);
+            return null;
+        }, new HandlebarsTemplateEngine());
+
     }
 }
