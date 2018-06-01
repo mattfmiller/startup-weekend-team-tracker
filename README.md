@@ -13,11 +13,12 @@ This application will allow teams to sign up for a weekend hack-a-thon event wit
 | Specification | Input | Output |
 | --- | --- | --- |
 | Program will set the team name | Input: "Blue Moon Boys" | Output: "Name: Blue Moon Boys" |
-| Program will set the team members | Input: "Bill and Scotty" | Output: "Members: Bill and Scotty" |
+| Program will set the team members | Input: "Bill, Scotty" | Output: "Members: Bill, Scotty" |
 | Program will set the team description | Input: "Just a couple guys looking to shake, rattle, and roll" | Output: "Description: Just a couple guys looking to shake, rattle, and roll" |
-| Program will display all teams made | Input: "Blue Moon Boys, The Hawks, " | Output: "Teams: Blue Moon Boys, The Hawks" |
-| Program will allow users to update their team members  | Input: "Bill, Scotty, and DJ" | Output: "Members: Bill, Scotty, and DJ" |
-| Program will allow user to update name and description | Input: "The Blue Moon Boys" | Output: "The Blue Moon Boys" |
+| Program will display all teams | Input: "Blue Moon Boys, The Hawks" | Output: "Teams: Blue Moon Boys, The Hawks" |
+| Program will allow user to view details of specific team | Input: click "Blue Moon Boys" | Output: "Name: Blue Moon Boys/ Members: Bill, Scotty/ Description: Just a couple guys looking to shake, rattle, and roll" |
+| Program will allow users to update their team members  | Input: "DJ" | Output: "Members: Bill, Scotty, DJ" |
+| Program will allow user to update name and description | Input: "The Blue Moon Boys/ Just a few guys looking to shake, rattle, and roll" | Output: "Name: The Blue Moon Boys/ Description: Just a few guys looking to shake, rattle, and roll" |
 
 
 ## Setup/Installation Requirements
