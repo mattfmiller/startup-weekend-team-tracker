@@ -14,4 +14,7 @@ public class Team {
         this.id = teamsList.size();
     }
 
+    public ArrayList<String> getMembers() {
+        return members;
+    }
 }
