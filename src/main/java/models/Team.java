@@ -59,4 +59,8 @@ public class Team {
     public void removeMember(String memberToRemove) {
         this.members.remove(memberToRemove);
     }
+
+    public void deleteTeam() {
+        teamsList.remove(id-1);
+    }
 }

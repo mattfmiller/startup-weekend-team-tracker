@@ -97,4 +97,13 @@ public class TeamTest {
         team.removeMember("scotty");
         assertFalse(team.getMembers().contains("scotty"));
     }
+
+    @Test
+    public void deleteDestination_deletesDestination_0() throws Exception {
+        Team team = new Team();
+        Team otherTeam = new Team();
+        team.deleteTeam();
+        assertEquals(1, Team.getAll().size());
+        assertEquals(2, Team.getAll().get(0).getId());
+    }
 }
