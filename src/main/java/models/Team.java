@@ -51,4 +51,10 @@ public class Team {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public static Team findById(int id) {
+        return teamsList.get(id-1);
+    }
+
+
 }

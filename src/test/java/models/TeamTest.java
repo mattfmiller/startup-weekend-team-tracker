@@ -82,5 +82,9 @@ public class TeamTest {
         assertEquals("A Team", team.getDescription());
     }
 
-
+    @Test
+    public void findById_returnsSpecificTeamById_1() {
+        Team team = new Team();
+        assertEquals(1, team.findById(team.getId()).getId());
+    }
 }
