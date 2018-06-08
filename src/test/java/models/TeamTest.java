@@ -26,17 +26,8 @@ public class TeamTest {
         assertEquals(expected, team.getDescription());
     }
 
-//    @Test
-//    public void getId_correctlyGetsId_1() throws Exception {
-//        Team team = new Team();
-//        Team otherTeam = new Team();
-//        assertEquals(1, team.getId());
-//        assertEquals(2, otherTeam.getId());
-//    }
-
-
     @Test
-    public void setName_correctlySetsName_blueMoonBoys() throws Exception {
+    public void setName_correctlySetsName_blueMoonBoys_theBlueMoonBoys() throws Exception {
         Team team = new Team("Blue Moon Boys", "Rockers");
         team.setName("The Blue Moon Boys");
         assertEquals("The Blue Moon Boys", team.getName());

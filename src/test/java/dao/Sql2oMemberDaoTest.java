@@ -46,7 +46,7 @@ public class Sql2oMemberDaoTest {
     }
 
     @Test
-    public void getAllMembersByTeamId_getsAllMeberbersOfTeam() {
+    public void getAllMembersByTeamId_getsAllMembersOfTeam() {
         Member testMember = setupNewMember();
         Member testMember2 = new Member("Scotty", "Guitar", 1);
         Member testMember3 = new Member("DJ", "Drums", 2);
@@ -72,7 +72,7 @@ public class Sql2oMemberDaoTest {
     }
 
     @Test
-    public void deleteById() {
+    public void deleteById_deletesMembersById() {
         Member testMember = setupNewMember();
         Member testMember2 = new Member("Scotty", "Guitar", 1);
         Member testMember3 = new Member("DJ", "Drums", 1);

@@ -73,7 +73,7 @@ public class Sql2oTeamDaoTest {
     }
 
     @Test
-    public void deleteById() {
+    public void deleteById_deletesTeamById() {
         Team testTeam = setupNewTeam();
         Team testTeam2 = new Team("Hawks", "Also rockers");
         teamDao.add(testTeam);

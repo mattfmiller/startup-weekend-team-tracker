@@ -13,7 +13,6 @@ public class Sql2oTeamDao implements TeamDao {
         this.sql2o = sql2o;
     }
 
-
     @Override
     public List<Team> getAll() {
         try(Connection con = sql2o.open()){

@@ -83,7 +83,6 @@ public class App {
             return new ModelAndView(model, "member-details.hbs");
         }, new HandlebarsTemplateEngine());
 
-
         //get:show form to update team
         get("/teams/:id/edit", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
@@ -127,7 +126,6 @@ public class App {
             return null;
         }, new HandlebarsTemplateEngine());
 
-
         //get: delete member
         get("/members/:id/delete", (req, res) -> {
             int idOfMemberToDelete = Integer.parseInt(req.params("id"));
@@ -137,7 +135,6 @@ public class App {
             res.redirect("/teams/" + teamId);
             return null;
         }, new HandlebarsTemplateEngine());
-
 
         //get: delete team and its members
         get("/teams/:id/delete", (req, res) -> {

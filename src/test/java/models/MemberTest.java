@@ -16,11 +16,6 @@ public class MemberTest {
         assertTrue(testMemeber instanceof Member);
     }
 
-//    @Test
-//    public void getId() {
-//        Member testMemeber = setupNewMember();
-//    }
-
     @Test
     public void getName_getsNameCorrectly_bill() {
         Member testMemeber = setupNewMember();
@@ -41,20 +36,20 @@ public class MemberTest {
     }
 
     @Test
-    public void setSkill_setsSkillCorrectly_guitar() {
+    public void setSkill_setsSkillCorrectly_guitar_guitar() {
         Member testMemeber = setupNewMember();
         testMemeber.setSkill("Guitar");
         assertEquals("Guitar", testMemeber.getSkill());
     }
 
     @Test
-    public void getTeamId() {
+    public void getTeamId_getsTeamIdCorrectly_1() {
         Member testMemeber = setupNewMember();
         assertEquals(1, testMemeber.getTeamId());
     }
 
     @Test
-    public void setTeamId() {
+    public void setTeamId_setsTeamIdCorrectly_2() {
         Member testMemeber = setupNewMember();
         testMemeber.setTeamId(2);
         assertEquals(2, testMemeber.getTeamId());
