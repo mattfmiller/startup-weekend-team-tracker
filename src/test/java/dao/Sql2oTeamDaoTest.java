@@ -4,6 +4,8 @@ import models.Team;
 import org.junit.*;
 import org.sql2o.*;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class Sql2oTeamDaoTest {
@@ -44,7 +46,19 @@ public class Sql2oTeamDaoTest {
     }
 
     @Test
-    public void getAll() {
+    public void noTeamsAreFound() throws Exception {
+        List<Team> allTeams = teamDao.getAll();
+        assertEquals(0, allTeams.size());
+    }
+
+    @Test
+    public void getAll_getsAllTeams_2() {
+        Team testTeam = setupNewTeam();
+        Team testTeam2 = new Team("Hawks", "Also rockers");
+        teamDao.add(testTeam);
+        teamDao.add(testTeam2);
+        List<Team> allTeams = teamDao.getAll();
+        assertEquals(2, allTeams.size());
     }
 
     @Test

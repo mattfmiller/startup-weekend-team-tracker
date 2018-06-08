@@ -16,7 +16,10 @@ public class Sql2oTeamDao implements TeamDao {
 
     @Override
     public List<Team> getAll() {
-        return null;
+        try(Connection con = sql2o.open()){
+            return con.createQuery("SELECT * FROM teams")
+                    .executeAndFetch(Team.class);
+        }
     }
 
     @Override
