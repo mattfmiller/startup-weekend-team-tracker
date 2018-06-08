@@ -3,9 +3,10 @@ package models;
 import java.util.Objects;
 
 public class Team {
+    private int id;
     private String name;
     private String description;
-    private int id;
+
 
     public Team(String name, String description) {
         this.name = name;
