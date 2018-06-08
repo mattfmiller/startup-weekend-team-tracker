@@ -62,6 +62,14 @@ public class Sql2oMemberDaoTest {
 
     @Test
     public void update() {
+        Member testMember = setupNewMember();
+        memberDao.add(testMember);
+        int id = testMember.getId();
+        memberDao.update(id, "Scotty", "Guitar", 2);
+        Member updatedMember = memberDao.findById(id);
+        assertEquals("Scotty", updatedMember.getName());
+        assertEquals("Guitar", updatedMember.getSkill());
+        assertEquals(2, updatedMember.getTeamId());
     }
 
     @Test
