@@ -131,8 +131,10 @@ public class App {
         //get: delete member
         get("/members/:id/delete", (req, res) -> {
             int idOfMemberToDelete = Integer.parseInt(req.params("id"));
+            Member memberToDelete = memberDao.findById(idOfMemberToDelete);
+            int teamId = memberToDelete.getTeamId();
             memberDao.deleteById(idOfMemberToDelete);
-            res.redirect("/");
+            res.redirect("/teams/" + teamId);
             return null;
         }, new HandlebarsTemplateEngine());
 
