@@ -15,7 +15,11 @@ public class Sql2oMemberDao implements MemberDao {
 
     @Override
     public List<Member> getAllMembersByTeamId(int teamId) {
-        return null;
+        try(Connection con = sql2o.open()){
+            return con.createQuery("SELECT * FROM members WHERE teamId = :teamId")
+                    .addParameter("teamId", teamId)
+                    .executeAndFetch(Member.class);
+        }
     }
 
     @Override

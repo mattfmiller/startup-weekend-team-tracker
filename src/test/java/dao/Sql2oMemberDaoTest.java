@@ -47,7 +47,17 @@ public class Sql2oMemberDaoTest {
     }
 
     @Test
-    public void getAllMembersByTeamId() {
+    public void getAllMembersByTeamId_getsAllMeberbersOfTeam() {
+        Member testMember = setupNewMember();
+        Member testMember2 = new Member("Scotty", "Guitar", 1);
+        Member testMember3 = new Member("DJ", "Drums", 2);
+        memberDao.add(testMember);
+        memberDao.add(testMember2);
+        memberDao.add(testMember3);
+        List<Member> allMembersOfTeam1 = memberDao.getAllMembersByTeamId(1);
+        assertEquals(2, allMembersOfTeam1.size());
+        assertTrue(allMembersOfTeam1.contains(testMember));
+        assertFalse(allMembersOfTeam1.contains(testMember3));
     }
 
     @Test
