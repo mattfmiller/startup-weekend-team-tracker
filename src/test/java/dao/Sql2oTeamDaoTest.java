@@ -74,5 +74,15 @@ public class Sql2oTeamDaoTest {
 
     @Test
     public void deleteById() {
+        Team testTeam = setupNewTeam();
+        Team testTeam2 = new Team("Hawks", "Also rockers");
+        teamDao.add(testTeam);
+        teamDao.add(testTeam2);
+        teamDao.deleteById(2);
+        List<Team> allTeams = teamDao.getAll();
+        assertEquals(1, allTeams.size());
+        assertTrue(allTeams.contains(testTeam));
+        assertFalse(allTeams.contains(testTeam2));
     }
+
 }
