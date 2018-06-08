@@ -61,7 +61,7 @@ public class Sql2oMemberDaoTest {
     }
 
     @Test
-    public void update() {
+    public void update_updatesMember() {
         Member testMember = setupNewMember();
         memberDao.add(testMember);
         int id = testMember.getId();
@@ -74,9 +74,33 @@ public class Sql2oMemberDaoTest {
 
     @Test
     public void deleteById() {
+        Member testMember = setupNewMember();
+        Member testMember2 = new Member("Scotty", "Guitar", 1);
+        Member testMember3 = new Member("DJ", "Drums", 1);
+        memberDao.add(testMember);
+        memberDao.add(testMember2);
+        memberDao.add(testMember3);
+        memberDao.deleteById(2);
+        List<Member> allMembersOfTeam1 = memberDao.getAllMembersByTeamId(1);
+        assertEquals(2, allMembersOfTeam1.size());
+        assertTrue(allMembersOfTeam1.contains(testMember));
+        assertFalse(allMembersOfTeam1.contains(testMember2));
+
     }
 
     @Test
-    public void deleteByTeamId() {
+    public void deleteByTeamId_deletesAllMembersWithGivenTeamId() {
+        Member testMember = setupNewMember();
+        Member testMember2 = new Member("Scotty", "Guitar", 1);
+        Member testMember3 = new Member("DJ", "Drums", 2);
+        memberDao.add(testMember);
+        memberDao.add(testMember2);
+        memberDao.add(testMember3);
+        memberDao.deleteByTeamId(1);
+        List<Member> allMembersOfTeam1 = memberDao.getAllMembersByTeamId(1);
+        List<Member> allMembersOfTeam2 = memberDao.getAllMembersByTeamId(2);
+        assertEquals(0, allMembersOfTeam1.size());
+        assertEquals(1,allMembersOfTeam2.size());
     }
+
 }
