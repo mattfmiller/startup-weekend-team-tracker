@@ -84,5 +84,4 @@ public class Sql2oTeamDaoTest {
         assertTrue(allTeams.contains(testTeam));
         assertFalse(allTeams.contains(testTeam2));
     }
-
 }

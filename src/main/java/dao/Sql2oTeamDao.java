@@ -57,7 +57,6 @@ public class Sql2oTeamDao implements TeamDao {
         } catch (Sql2oException ex) {
             System.out.println(ex);
         }
-
     }
 
     @Override

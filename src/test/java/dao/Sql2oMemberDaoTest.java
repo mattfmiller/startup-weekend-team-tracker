@@ -1,7 +1,6 @@
 package dao;
 
 import models.Member;
-import models.Team;
 import org.junit.*;
 import org.sql2o.*;
 
@@ -85,7 +84,6 @@ public class Sql2oMemberDaoTest {
         assertEquals(2, allMembersOfTeam1.size());
         assertTrue(allMembersOfTeam1.contains(testMember));
         assertFalse(allMembersOfTeam1.contains(testMember2));
-
     }
 
     @Test
@@ -102,5 +100,4 @@ public class Sql2oMemberDaoTest {
         assertEquals(0, allMembersOfTeam1.size());
         assertEquals(1,allMembersOfTeam2.size());
     }
-
 }

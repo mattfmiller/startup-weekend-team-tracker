@@ -34,7 +34,6 @@ public class Sql2oMemberDao implements MemberDao {
         } catch (Sql2oException ex) {
             System.out.println(ex);
         }
-
     }
 
     @Override
@@ -59,7 +58,6 @@ public class Sql2oMemberDao implements MemberDao {
         } catch (Sql2oException ex) {
             System.out.println(ex);
         }
-
     }
 
     @Override
@@ -72,7 +70,6 @@ public class Sql2oMemberDao implements MemberDao {
         } catch (Sql2oException ex){
             System.out.println(ex);
         }
-
     }
 
     @Override
@@ -85,7 +82,5 @@ public class Sql2oMemberDao implements MemberDao {
         } catch (Sql2oException ex){
             System.out.println(ex);
         }
-
     }
-
 }

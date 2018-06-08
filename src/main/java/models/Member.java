@@ -62,5 +62,4 @@ public class Member {
 
         return Objects.hash(id, name, skill, teamId);
     }
-
 }
