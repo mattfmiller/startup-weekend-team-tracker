@@ -24,7 +24,7 @@ public class MemberTest {
     @Test
     public void getName() {
         Member testMemeber = setupNewMember();
-
+        assertEquals("Bill", testMemeber.getName());
     }
 
     @Test
