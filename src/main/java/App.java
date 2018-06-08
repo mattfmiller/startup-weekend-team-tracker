@@ -26,31 +26,29 @@ public class App {
 //
         get("/info", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
+            List<Team> teams = teamDao.getAll();
+            model.put("teams", teams);
             return new ModelAndView(model, "info.hbs");
         }, new HandlebarsTemplateEngine());
 //
-//        get("/teams/new", (req, res) -> {
-//            Map<String, Object> model = new HashMap<>();
-//            return new ModelAndView(model, "newteam-form.hbs");
-//        }, new HandlebarsTemplateEngine());
+        get("/teams/new", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Team> teams = teamDao.getAll();
+            model.put("teams", teams);
+            return new ModelAndView(model, "newteam-form.hbs");
+        }, new HandlebarsTemplateEngine());
 //
-//        post("/teams/new", (req, res) -> {
-//            Map<String, Object> model = new HashMap<String, Object>();
-//            String teamName = req.queryParams("name");
-//            String teamDescription = req.queryParams("description");
-//            String teamMembersString = req.queryParams("members");
-//            Team newTeam = new Team();
-//            newTeam.setName(teamName);
-//            newTeam.setDescription(teamDescription);
-//            List<String> teamMembersArray = Arrays.asList(teamMembersString.split("\\s*,\\s*"));
-//            for ( String teamMember : teamMembersArray ) {
-//                newTeam.addMember(teamMember);
-//            }
-//            System.out.println(newTeam.getMembers());
-//            model.put("teams", newTeam);
-//            res.redirect("/");
-//            return null;
-//        }, new HandlebarsTemplateEngine());
+        post("/teams/new", (req, res) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            String teamName = req.queryParams("name");
+            String teamDescription = req.queryParams("description");
+            Team newTeam = new Team(teamName, teamDescription);
+            teamDao.add(newTeam);
+            List<Team> teams = teamDao.getAll();
+            model.put("teams", teams);
+            res.redirect("/");
+            return null;
+        }, new HandlebarsTemplateEngine());
 //
 //        get("/teams/:id", (req, res) -> {
 //            Map<String, Object> model = new HashMap<>();
