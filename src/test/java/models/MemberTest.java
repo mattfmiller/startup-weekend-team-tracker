@@ -30,11 +30,14 @@ public class MemberTest {
     @Test
     public void setName() {
         Member testMemeber = setupNewMember();
+        testMemeber.setName("Scotty");
+        assertEquals("Scotty", testMemeber.getName());
     }
 
     @Test
     public void getDescription() {
         Member testMemeber = setupNewMember();
+
     }
 
     @Test
