@@ -3,7 +3,7 @@
     {{#if editTeam}}
         <h1>Edit Team {{editTeam.name}}</h1>
 
-        <form action="/teams/{{editTeam.id}}/edit" method="post">
+        <form action="/teams/{{editTeam.id}}" method="post">
             <label for="name">Team Name:</label>
             <input id="name" name="name" type="text" value="{{editTeam.name}}">
             <br>
@@ -16,7 +16,7 @@
         <h5><strong>Team Members:</strong></h5>
         <ul>
             {{#each teamMembers}}
-                <li>{{ name }}  <small><a href="/teams/{{editTeam.id}}/members/{{id}}/edit">Edit member</a> or <a href="/teams/{{editTeam.id}}/members/{{id}}/delete">Delete member</a></small></li>
+                <li>{{ name }}  <small><a href="/members/{{id}}/edit">Edit member</a> or <a href="/members/{{id}}/delete">Delete member</a></small></li>
             {{/each}}
         </ul>
     {{else}}

@@ -96,7 +96,7 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         //post: process for to update team
-        post("/teams/:id/edit", (req, res) -> {
+        post("/teams/:id", (req, res) -> {
             String newName = req.queryParams("name");
             String newDescription = req.queryParams("description");
             int idOfTeamToEdit = Integer.parseInt(req.params("id"));
@@ -104,8 +104,32 @@ public class App {
             res.redirect("/teams/" + idOfTeamToEdit);
             return null;
         }, new HandlebarsTemplateEngine());
-//
-//        get("/teams/:id/members/delete", (req, res) -> {
+
+        //get:show form to update member
+        get("/members/:id/edit", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfMemberToEdit = Integer.parseInt(req.params("id"));
+            Member editMember = memberDao.findById(idOfMemberToEdit);
+            model.put("editMember", editMember);
+            List<Team> teams = teamDao.getAll();
+            model.put("teams", teams);
+            return new ModelAndView(model, "member-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //post: process for to update member
+        post("/members/:id", (req, res) -> {
+            String newName = req.queryParams("name");
+            String newSkill = req.queryParams("skill");
+            int newTeamId = Integer.parseInt(req.queryParams("teamId"));
+            int idOfMemberToEdit = Integer.parseInt(req.params("id"));
+            memberDao.update(idOfMemberToEdit, newName, newSkill, newTeamId);
+            res.redirect("/teams/" + newTeamId);
+            return null;
+        }, new HandlebarsTemplateEngine());
+
+
+        //get: delete member
+//        get("/members/:id/delete", (req, res) -> {
 //            Map<String, Object> model = new HashMap<>();
 //            int idOfTeamToEdit = Integer.parseInt(req.params("id"));
 //            Team editTeam = Team.findById(idOfTeamToEdit);
@@ -113,14 +137,7 @@ public class App {
 //            return new ModelAndView(model, "delete-members.hbs");
 //        }, new HandlebarsTemplateEngine());
 //
-//        post("/teams/:id/members/delete", (req, res) -> {
-//            String memberToRemove = req.queryParams("memberToRemove");
-//            int idOfTeamToEdit = Integer.parseInt(req.params("id"));
-//            Team editTeam = Team.findById(idOfTeamToEdit);
-//            editTeam.removeMember(memberToRemove);
-//            res.redirect("/teams/" + idOfTeamToEdit);
-//            return null;
-//        }, new HandlebarsTemplateEngine());
+
 
         //get: delete team and its members
         get("/teams/:id/delete", (req, res) -> {

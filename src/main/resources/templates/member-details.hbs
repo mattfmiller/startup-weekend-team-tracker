@@ -8,20 +8,11 @@
 
     <h5><strong>Team: </strong><a href="/teams/{{foundTeam.id}}">{{foundTeam.name}}</a></h5>
     <br>
-    <!--<h5><strong>Add a team member to {{ foundTeam.name}}:</strong></h5>-->
-    <!--<form action="/teams/{{foundTeam.id}}" method="post">-->
-        <!--<label for="memberName">Name:</label>-->
-        <!--<input id="memberName" name="memberName" type="text">-->
-        <!--<label for="memberSkill">Skill:</label>-->
-        <!--<input id="memberSkill" name="memberSkill" type="text">-->
-        <!--<button type="submit" class="btn btn-default">Add</button>-->
-    <!--</form>-->
-    <!--<br>-->
     <br>
     <p>
-        <a href="/teams/{{foundTeam.id}}/members/{{foundMember.id}}/edit">Edit this members's details</a>
+        <a href="/members/{{foundMember.id}}/edit">Edit this members's details</a>
         <br>
-        <a href="/teams/{{foundTeam.id}}/members/{{foundMember.id}}/delete">Delete this member</a>
+        <a href="/members/{{foundMember.id}}/delete">Delete this member</a>
     </p>
 
 {{/partial}}
