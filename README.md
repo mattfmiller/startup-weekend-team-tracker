@@ -22,7 +22,6 @@ This application will allow teams to sign up for a weekend hack-a-thon event wit
 | Program will allow users to delete team members  | Input: "DJ" | Output: "Members: Bill, Scotty" |
 | Program will allow users to delete a team  | Input: "The Blue Moon Boys" | Output: "The Hawks" |
 
-
 ## Setup/Installation Requirements
 
 * View program by cloning repository from https://github.com/mattfmiller/event-planning
