@@ -5,12 +5,12 @@ import java.util.Objects;
 public class Member {
     private int id;
     private String name;
-    private String description;
+    private String skill;
     private int teamId;
 
-    public Member(String name, String description, int teamId) {
+    public Member(String name, String skill, int teamId) {
         this.name = name;
-        this.description = description;
+        this.skill = skill;
         this.teamId = teamId;
     }
 
@@ -26,12 +26,12 @@ public class Member {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getSkill() {
+        return skill;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setSkill(String skill) {
+        this.skill = skill;
     }
 
     public int getTeamId() {
@@ -50,12 +50,13 @@ public class Member {
         return id == member.id &&
                 teamId == member.teamId &&
                 Objects.equals(name, member.name) &&
-                Objects.equals(description, member.description);
+                Objects.equals(skill, member.skill);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, name, description, teamId);
+        return Objects.hash(id, name, skill, teamId);
     }
+
 }
