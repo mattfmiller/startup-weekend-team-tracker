@@ -129,14 +129,12 @@ public class App {
 
 
         //get: delete member
-//        get("/members/:id/delete", (req, res) -> {
-//            Map<String, Object> model = new HashMap<>();
-//            int idOfTeamToEdit = Integer.parseInt(req.params("id"));
-//            Team editTeam = Team.findById(idOfTeamToEdit);
-//            model.put("editTeam", editTeam);
-//            return new ModelAndView(model, "delete-members.hbs");
-//        }, new HandlebarsTemplateEngine());
-//
+        get("/members/:id/delete", (req, res) -> {
+            int idOfMemberToDelete = Integer.parseInt(req.params("id"));
+            memberDao.deleteById(idOfMemberToDelete);
+            res.redirect("/");
+            return null;
+        }, new HandlebarsTemplateEngine());
 
 
         //get: delete team and its members
