@@ -9,7 +9,7 @@
     <h5><strong>Team Members:</strong></h5>
         <ul>
             {{#each teamMembers}}
-                <li><a href="/teams/{{foundTeam.id}}/members/{{id}}"{{ name }} - {{skill}}</li>
+                <li>{{ name }}   <a href="/teams/{{foundTeam.id}}/members/{{id}}"><small>More info</small></a></li>
             {{/each}}
         </ul>
     <br>
@@ -27,8 +27,8 @@
     <p>
         <a href="/teams/{{foundTeam.id}}/edit">Edit this team's details</a>
         <br>
-        <a href="/teams/{{foundTeam.id}}/members/delete">Edit this teams' members</a>
-        <br>
+        <!--<a href="/teams/{{foundTeam.id}}/members/delete">Edit this teams' members</a>-->
+        <!--<br>-->
         <a href="/teams/{{foundTeam.id}}/delete">Delete this team</a>
     </p>
 

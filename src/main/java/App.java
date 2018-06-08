@@ -71,12 +71,27 @@ public class App {
             return null;
         }, new HandlebarsTemplateEngine());
 
+        //get: show member details
+        get("/teams/:teamId/members/:memberId", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int teamId = Integer.parseInt(req.params("teamId"));
+            Team foundTeam = teamDao.findById(teamId);
+            model.put("foundTeam", foundTeam);
+            int memberId = Integer.parseInt(req.params("memberId"));
+            Member foundMember = memberDao.findById(memberId);
+            model.put("foundMember", foundMember);
+            return new ModelAndView(model, "member-details.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
         //get:show form to update team
         get("/teams/:id/edit", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             int idOfTeamToEdit = Integer.parseInt(req.params("id"));
             Team editTeam = teamDao.findById(idOfTeamToEdit);
             model.put("editTeam", editTeam);
+            List<Member> teamMembers = memberDao.getAllMembersByTeamId(idOfTeamToEdit);
+            model.put("teamMembers", teamMembers);
             return new ModelAndView(model, "team-form.hbs");
         }, new HandlebarsTemplateEngine());
 
