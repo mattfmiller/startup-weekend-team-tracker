@@ -2,7 +2,7 @@
 
     {{#if editTeam}}
         <h1>Edit Team {{editTeam.name}}</h1>
-        <form action="/teams/{{editTeam.id}}/update" method="post">
+        <form action="/teams/{{editTeam.id}}/edit" method="post">
             <label for="name">Team Name:</label>
             <input id="name" name="name" type="text" value="{{editTeam.name}}">
             <br>
@@ -13,7 +13,7 @@
         </form>
     {{else}}
         <h1>Add a new Team!</h1>
-        <form action="/teams/new" method="post">
+        <form action="/teams" method="post">
             <label for="name">Team Name:</label>
             <input id="name" name="name" type="text" placeholder="Your team name here">
             <br>

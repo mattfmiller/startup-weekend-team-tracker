@@ -1,25 +1,27 @@
 {{#partial "content"}}
 
-    <h5>Team Name:</h5>
-    <p>{{ foundTeam.name }}</p>
+    <h5>Team Name: <strong>{{ foundTeam.name }}</strong></h5>
+
+
+    <h5>Team Description: <strong> {{ foundTeam.description }}</strong></h5>
+
 
     <h5>Team Members:</h5>
     {{#each foundTeam.members}}
-        <p> {{ this }}</p>
+        <h5><srong>{{ this }}</srong></h5>
     {{/each}}
-
-    <h5>Team Description:</h5>
-    <p> {{ foundTeam.description }}</p>
-
+    <br>
+    <br>
     <form action="/teams/{{foundTeam.id}}" method="post">
         <label for="newTeamMember">Add a team member to {{ foundTeam.name}}</label>
         <br>
         <input id="newTeamMember" name="newTeamMember" type="text">
         <button type="submit" class="btn btn-default">Add</button>
     </form>
-
+    <br>
+    <br>
     <p>
-        <a href="/teams/{{foundTeam.id}}/update">Edit this team's details</a>
+        <a href="/teams/{{foundTeam.id}}/edit">Edit this team's details</a>
         <br>
         <a href="/teams/{{foundTeam.id}}/members/delete">Edit this teams' members</a>
         <br>
