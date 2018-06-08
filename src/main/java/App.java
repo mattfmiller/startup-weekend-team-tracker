@@ -1,6 +1,9 @@
 import java.util.*;
 
+import dao.Sql2oMemberDao;
+import dao.Sql2oTeamDao;
 import models.Team;
+import org.sql2o.Sql2o;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 import static spark.Spark.*;
@@ -9,17 +12,22 @@ public class App {
     public static void main(String[] args) {
         staticFileLocation("/public");
 
-//        get("/", (req, res) -> {
-//            Map<String, Object> model = new HashMap<>();
-//            ArrayList<Team> teams = Team.getAll();
-//            model.put("teams", teams);
-//            return new ModelAndView(model, "index.hbs");
-//        }, new HandlebarsTemplateEngine());
+        String connectionString = "jdbc:h2:~/hackathon.db;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
+        Sql2o sql2o = new Sql2o(connectionString, "", "");
+        Sql2oTeamDao teamDao = new Sql2oTeamDao(sql2o);
+        Sql2oMemberDao memberDao = new Sql2oMemberDao(sql2o);
+
+        get("/", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Team> teams = teamDao.getAll();
+            model.put("teams", teams);
+            return new ModelAndView(model, "index.hbs");
+        }, new HandlebarsTemplateEngine());
 //
-//        get("/info", (req, res) -> {
-//            Map<String, Object> model = new HashMap<>();
-//            return new ModelAndView(model, "info.hbs");
-//        }, new HandlebarsTemplateEngine());
+        get("/info", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "info.hbs");
+        }, new HandlebarsTemplateEngine());
 //
 //        get("/teams/new", (req, res) -> {
 //            Map<String, Object> model = new HashMap<>();
