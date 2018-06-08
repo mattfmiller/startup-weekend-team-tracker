@@ -36,11 +36,15 @@ public class Sql2oTeamDaoTest {
     }
 
     @Test
-    public void getAll() {
+    public void existingTeamCanBeFoundById() {
+        Team testTeam = setupNewTeam();
+        teamDao.add(testTeam);
+        Team foundTeam = teamDao.findById(testTeam.getId());
+        assertEquals(testTeam, foundTeam);
     }
 
     @Test
-    public void findById() {
+    public void getAll() {
     }
 
     @Test
