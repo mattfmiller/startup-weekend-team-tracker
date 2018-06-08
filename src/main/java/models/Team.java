@@ -1,23 +1,15 @@
 package models;
 
-import java.util.ArrayList;
+import java.util.Objects;
 
 public class Team {
-    private ArrayList<String> members = new ArrayList<>();
     private String name;
     private String description;
     private int id;
-    private static ArrayList<Team> teamsList = new ArrayList<>();
 
-    public Team() {
-        this.name = null;
-        this.description = null;
-        teamsList.add(this);
-        this.id = teamsList.size();
-    }
-
-    public ArrayList<String> getMembers() {
-        return members;
+    public Team(String name, String description) {
+        this.name = name;
+        this.description = description;
     }
 
     public String getName() {
@@ -28,20 +20,8 @@ public class Team {
         return description;
     }
 
-    public static ArrayList<Team> getAll() {
-        return teamsList;
-    }
-
     public int getId() {
         return id;
-    }
-
-    public static void clearAll() {
-        teamsList.clear();
-    }
-
-    public void addMember(String newMember) {
-        this.members.add(newMember);
     }
 
     public void setName(String name) {
@@ -52,15 +32,19 @@ public class Team {
         this.description = description;
     }
 
-    public static Team findById(int id) {
-        return teamsList.get(id-1);
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Team team = (Team) o;
+        return id == team.id &&
+                Objects.equals(name, team.name) &&
+                Objects.equals(description, team.description);
     }
 
-    public void removeMember(String memberToRemove) {
-        this.members.remove(memberToRemove);
-    }
+    @Override
+    public int hashCode() {
 
-    public void deleteTeam() {
-        teamsList.remove(id-1);
+        return Objects.hash(name, description, id);
     }
 }
