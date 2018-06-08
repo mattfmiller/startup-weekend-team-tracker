@@ -1,21 +1,25 @@
 {{#partial "content"}}
 
-    <h5>Team Name: <strong>{{ foundTeam.name }}</strong></h5>
+    <h5><strong>Team Name: </strong>{{ foundTeam.name }}</h5>
 
 
-    <h5>Team Description: <strong> {{ foundTeam.description }}</strong></h5>
+    <h5><strong>Team Description: </strong> {{ foundTeam.description }}</h5>
 
 
-    <h5>Team Members:</h5>
-    {{#each foundTeam.members}}
-        <h5><srong>{{ this }}</srong></h5>
-    {{/each}}
+    <h5><strong>Team Members:</strong></h5>
+        <ul>
+            {{#each teamMembers}}
+                <li><a href="/teams/{{foundTeam.id}}/members/{{id}}"{{ name }} - {{skill}}</li>
+            {{/each}}
+        </ul>
     <br>
     <br>
+    <h5><strong>Add a team member to {{ foundTeam.name}}:</strong></h5>
     <form action="/teams/{{foundTeam.id}}" method="post">
-        <label for="newTeamMember">Add a team member to {{ foundTeam.name}}</label>
-        <br>
-        <input id="newTeamMember" name="newTeamMember" type="text">
+        <label for="memberName">Name:</label>
+        <input id="memberName" name="memberName" type="text">
+        <label for="memberSkill">Skill:</label>
+        <input id="memberSkill" name="memberSkill" type="text">
         <button type="submit" class="btn btn-default">Add</button>
     </form>
     <br>

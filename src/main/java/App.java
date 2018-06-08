@@ -2,6 +2,7 @@ import java.util.*;
 
 import dao.Sql2oMemberDao;
 import dao.Sql2oTeamDao;
+import models.Member;
 import models.Team;
 import org.sql2o.Sql2o;
 import spark.ModelAndView;
@@ -54,18 +55,21 @@ public class App {
             int idOfTeamToFind = Integer.parseInt(req.params("id"));
             Team foundTeam = teamDao.findById(idOfTeamToFind);
             model.put("foundTeam", foundTeam);
+            List<Member> teamMembers = memberDao.getAllMembersByTeamId(idOfTeamToFind);
+            model.put("teamMembers", teamMembers);
             return new ModelAndView(model, "team-details.hbs");
         }, new HandlebarsTemplateEngine());
 
         //post: process new members form
-//        post("/teams/:id", (req, res) -> {
-//            String newTeamMember = req.queryParams("newTeamMember");
-//            int idOfTeamToFind = Integer.parseInt(req.params("id"));
-//            Team foundTeam = Team.findById(idOfTeamToFind);
-//            foundTeam.addMember(newTeamMember);
-//            res.redirect("/teams/" + idOfTeamToFind);
-//            return null;
-//        }, new HandlebarsTemplateEngine());
+        post("/teams/:id", (req, res) -> {
+            String memberName = req.queryParams("memberName");
+            String memberSkill = req.queryParams("memberSkill");
+            int memberTeamId = Integer.parseInt(req.params("id"));
+            Member newMember = new Member(memberName, memberSkill, memberTeamId);
+            memberDao.add(newMember);
+            res.redirect("/teams/" + memberTeamId);
+            return null;
+        }, new HandlebarsTemplateEngine());
 
         //get:show form to update team
         get("/teams/:id/edit", (req, res) -> {
@@ -102,14 +106,14 @@ public class App {
 //            res.redirect("/teams/" + idOfTeamToEdit);
 //            return null;
 //        }, new HandlebarsTemplateEngine());
-//
-//        get("/teams/:id/delete", (req, res) -> {
-//            int idOfTeamToDelete = Integer.parseInt(req.params("id"));
-//            Team teamToDelete = Team.findById(idOfTeamToDelete);
-//            teamToDelete.deleteTeam();
-//            res.redirect("/");
-//            return null;
-//        }, new HandlebarsTemplateEngine());
 
+        //get: delete team and its members
+        get("/teams/:id/delete", (req, res) -> {
+            int idOfTeamToDelete = Integer.parseInt(req.params("id"));
+            memberDao.deleteByTeamId(idOfTeamToDelete);
+            teamDao.deleteById(idOfTeamToDelete);
+            res.redirect("/");
+            return null;
+        }, new HandlebarsTemplateEngine());
     }
 }
